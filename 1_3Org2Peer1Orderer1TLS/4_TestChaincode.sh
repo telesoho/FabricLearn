@@ -11,10 +11,10 @@ peer lifecycle chaincode queryinstalled
 export CHAINCODE_ID=basic_1:06613e463ef6694805dd896ca79634a2de36fdf019fa7976467e6e632104d718
 
 source envpeer1soft
-peer lifecycle chaincode approveformyorg -o orderer1.orderer.ifantasy.net:7151 --tls --cafile $ORDERER_CA  --channelID mychannel --name basic --version 1.0 --sequence 1 --waitForEvent --init-required --package-id $CHAINCODE_ID
+peer lifecycle chaincode approveformyorg -o orderer1.orderer.ifantasy.net:7151 --tls --cafile $ORDERER_CA --channelID mychannel --name basic --version 1.0 --sequence 1 --waitForEvent --init-required --package-id $CHAINCODE_ID
 peer lifecycle chaincode queryapproved -C mychannel -n basic --sequence 1
 source envpeer1web
-peer lifecycle chaincode approveformyorg -o orderer1.orderer.ifantasy.net:7151 --tls --cafile $ORDERER_CA  --channelID mychannel --name basic --version 1.0 --sequence 1 --waitForEvent --init-required --package-id $CHAINCODE_ID
+peer lifecycle chaincode approveformyorg -o orderer1.orderer.ifantasy.net:7151 --tls --cafile $ORDERER_CA --channelID mychannel --name basic --version 1.0 --sequence 1 --waitForEvent --init-required --package-id $CHAINCODE_ID
 peer lifecycle chaincode queryapproved -C mychannel -n basic --sequence 1
 
 peer lifecycle chaincode checkcommitreadiness -o orderer1.orderer.ifantasy.net:7151 --tls --cafile $ORDERER_CA --channelID mychannel --name basic --version 1.0 --sequence 1 --init-required
