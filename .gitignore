@@ -15,6 +15,6 @@
 vendor/
 
 bin/
-config/
+/config/
 install-fabric.sh
 *.tar.gz
