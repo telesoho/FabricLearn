@@ -98,12 +98,13 @@ services:
     container_name: orderer1.orderer.localcoin.jp
     environment:
       - ORDERER_GENERAL_LOCALMSPID=ordererMSP
+      - ORDERER_GENERAL_LISTENPORT=8050 # 必須です
     command: orderer
     volumes:
       - ./fabric-ca-client/ca.orderer.localcoin.jp/users/orderer1:/var/hyperledger/orderer
       - orderer1.orderer.localcoin.jp:/var/hyperledger/production/orderer
     ports:
-      - 8050:7050
+      - 8050:8050
     networks:
       localcoin_net:
         ipv4_address: 172.1.0.21

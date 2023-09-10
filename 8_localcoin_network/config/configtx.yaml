@@ -185,6 +185,7 @@ Orderer: &OrdererDefaults
     # to include the OrdererEndpoints item in your org definition
     Addresses:
         - orderer0.orderer.localcoin.jp:7050
+        - orderer1.orderer.localcoin.jp:8050
 
     EtcdRaft:
         Consenters:

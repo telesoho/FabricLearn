@@ -49,7 +49,7 @@ services:
       - ORDERER_GENERAL_LISTENPORT=7050
       # - ORDERER_GENERAL_GENESISMETHOD=file
       # - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
-      - ORDERER_GENERAL_LOCALMSPID=ordererMSP
+      # - ORDERER_GENERAL_LOCALMSPID=ordererMSP
       # - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
       # enabled TLS
       # - ORDERER_GENERAL_TLS_ENABLED=true
@@ -61,6 +61,6 @@ services:
       # - ORDERER_GENERAL_CLUSTER_LISTENPORT=7150
       # - ORDERER_GENERAL_CLUSTER_LISTENADDRESS=0.0.0.0
       # - ORDERER_GENERAL_CLUSTER_SERVERCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
-      # - ORDERER_GENERAL_CLUSTER_SERVERPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+      # - ORDERER_GENERAL_CLUSTER_SERVERPRIVATEKEY=/var/hyperledger/orderer/tls/server.key   
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric
 
