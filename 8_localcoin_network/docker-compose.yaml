@@ -13,7 +13,7 @@ version: "2.1"
 volumes:
   orderer0.orderer.localcoin.jp:  
   orderer1.orderer.localcoin.jp:
-  orderer2.localcoin.jp:
+  orderer2.orderer.localcoin.jp:
   peer0.sdl.localcoin.jp:
   peer1.sdl.localcoin.jp:
 
@@ -110,6 +110,25 @@ services:
         ipv4_address: 172.1.0.21
 
 
+  orderer2.orderer.localcoin.jp:
+    extends:
+      file: docker-base.yaml
+      service: orderer-base
+    container_name: orderer2.orderer.localcoin.jp
+    environment:
+      - ORDERER_GENERAL_LOCALMSPID=ordererMSP
+      - ORDERER_GENERAL_LISTENPORT=9050 # 必須です
+    command: orderer
+    volumes:
+      - ./fabric-ca-client/ca.orderer.localcoin.jp/users/orderer2:/var/hyperledger/orderer
+      - orderer2.orderer.localcoin.jp:/var/hyperledger/production/orderer
+    ports:
+      - 9050:9050
+    networks:
+      localcoin_net:
+        ipv4_address: 172.1.0.22
+
+
   peer0.sdl.localcoin.jp:
     extends:
       file: docker-base.yaml
@@ -119,6 +138,8 @@ services:
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=localcoin_net
       # Peer specific variabes
       - CORE_PEER_ID=peer0.sdl.localcoin.jp
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
       - CORE_PEER_ADDRESS=peer0.sdl.localcoin.jp:7051
       - CORE_PEER_CHAINCODEADDRESS=peer0.sdl.localcoin.jp:7052
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.sdl.localcoin.jp:7051
@@ -147,6 +168,8 @@ services:
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=localcoin_net
       # Peer specific variabes
       - CORE_PEER_ID=peer1.sdl.localcoin.jp
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:8051
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:8052
       - CORE_PEER_ADDRESS=peer1.sdl.localcoin.jp:8051
       - CORE_PEER_CHAINCODEADDRESS=peer1.sdl.localcoin.jp:8052
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.sdl.localcoin.jp:8051
@@ -157,8 +180,8 @@ services:
       - peer1.sdl.localcoin.jp:/var/hyperledger/production
     command: peer node start
     ports:
-      - 8051:7051
-      - 8052:7052
+      - 8051:8051
+      - 8052:8052
     networks:
       localcoin_net:
         ipv4_address: 172.1.0.31

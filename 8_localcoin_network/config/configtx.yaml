@@ -44,6 +44,7 @@ Organizations:
         OrdererEndpoints:
             - orderer0.orderer.localcoin.jp:7050
             - orderer1.orderer.localcoin.jp:8050
+            - orderer2.orderer.localcoin.jp:9050            
 
     - &sdlMSP
         # DefaultOrg defines the organization which is used in the sampleconfig
@@ -186,6 +187,7 @@ Orderer: &OrdererDefaults
     Addresses:
         - orderer0.orderer.localcoin.jp:7050
         - orderer1.orderer.localcoin.jp:8050
+        - orderer2.orderer.localcoin.jp:9050
 
     EtcdRaft:
         Consenters:
@@ -197,10 +199,10 @@ Orderer: &OrdererDefaults
           Port: 8050
           ClientTLSCert: ../fabric-ca-client/ca.orderer.localcoin.jp/users/orderer1/tls/server.crt
           ServerTLSCert: ../fabric-ca-client/ca.orderer.localcoin.jp/users/orderer1/tls/server.crt
-        # - Host: orderer2.localcoin.jp
-        #   Port: 9050
-        #   ClientTLSCert: ../fabric-ca-client/orderer.localcoin.jp/orderers/orderer2/tls/server.crt
-        #   ServerTLSCert: ../fabric-ca-client/orderer.localcoin.jp/orderers/orderer2/tls/server.crt
+        - Host: orderer2.orderer.localcoin.jp
+          Port: 9050
+          ClientTLSCert: ../fabric-ca-client/ca.orderer.localcoin.jp/users/orderer2/tls/server.crt
+          ServerTLSCert: ../fabric-ca-client/ca.orderer.localcoin.jp/users/orderer2/tls/server.crt
 
 
     # Batch Timeout: The amount of time to wait before creating a batch

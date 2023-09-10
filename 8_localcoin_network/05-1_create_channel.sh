@@ -1,3 +1,5 @@
+. env_peer0.sh
+
 CHANNELS_FOLDER=$LOCAL_ROOT_PATH/fabric-ca-client/channels
 
 infoln "Copy signed key for discover tool"
@@ -14,7 +16,7 @@ peer channel create --outputBlock $CHANNELS_FOLDER/sdlchannel.block -c sdlchanne
 infoln "Join Peer 0 Node to the Channel"
 peer channel join -b $CHANNELS_FOLDER/sdlchannel.block -o $ORDERER --cafile $ROOT_TLS_CA_CERTFILES --tls 2>&1 1>&log.txt; ifErrorPause
 
-. 05-0_export_env_peer1.sh
+. env_peer1.sh
 
 infoln "Join Peer 1 Node to the Channel"
 peer channel join -b $CHANNELS_FOLDER/sdlchannel.block -o $ORDERER --cafile $ROOT_TLS_CA_CERTFILES --tls 2>&1 1>&log.txt; ifErrorPause

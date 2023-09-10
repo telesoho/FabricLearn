@@ -20,12 +20,6 @@ wait 5
 . 04-1-2_startup_orderers.sh
 wait 10
 docker-compose ps
-. 05-0_export_env_peer0.sh
 . 05-1_create_channel.sh
-# . 06-1_deploy_chaincode_odoo_user.sh
-# # . 06-2_deploy_chaincode_erc721.sh
-# # . 06-3_deploy_chaincode_erc20.sh
-# . 06-4_deploy_chaincode_gtoken.sh
-# . 06-5_deploy_chaincode_localcoin.sh
-# successln "All done!"
-# # read -p "CTRL+C to cancle"
+. 06-1_install_chaincode_to_peer0.sh
+# . 06-2_install_chaincode_to_peer1.sh
