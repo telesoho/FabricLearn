@@ -19,10 +19,9 @@ wait 5
 . 04-1-1_prepare_for_orderers.sh
 . 04-1-2_startup_orderers.sh
 wait 10
-# docker-compose ps
-# . 05-0_export_env_peer0.sh
-# # . 05-0_export_env_peer1.sh
-# . 05-1_create_channel.sh
+docker-compose ps
+. 05-0_export_env_peer0.sh
+. 05-1_create_channel.sh
 # . 06-1_deploy_chaincode_odoo_user.sh
 # # . 06-2_deploy_chaincode_erc721.sh
 # # . 06-3_deploy_chaincode_erc20.sh

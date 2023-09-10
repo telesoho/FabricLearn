@@ -22,3 +22,26 @@ echo 'NodeOUs:
   OrdererOUIdentifier:
     Certificate: cacerts/ca-sdl-localcoin-jp-8054-ca-sdl.pem
     OrganizationalUnitIdentifier: orderer' >${FABRIC_CA_CLIENT_HOME}/msp/config.yaml
+
+infoln "Registering org sdl-admin on $CA_SDL_LOCALCOIN"
+fabric-ca-client register --caname ca-sdl --id.name sdl-admin --id.secret sdl-adminpw --id.type admin 2>&1 1>&log.txt; ifErrorPause
+
+export FABRIC_CA_CLIENT_HOME=$LOCAL_ROOT_PATH/fabric-ca-client/ca.sdl.localcoin.jp/users/sdl-admin
+
+infoln "Enroll sdl-admin user"
+fabric-ca-client enroll -u https://sdl-admin:sdl-adminpw@$CA_SDL_LOCALCOIN --tls.certfiles $ROOT_TLS_CA_CERTFILES 2>&1 1>&log.txt; ifErrorPause
+
+echo 'NodeOUs:
+  Enable: true
+  ClientOUIdentifier:
+    Certificate: cacerts/ca-sdl-localcoin-jp-8054.pem
+    OrganizationalUnitIdentifier: client
+  PeerOUIdentifier:
+    Certificate: cacerts/ca-sdl-localcoin-jp-8054.pem
+    OrganizationalUnitIdentifier: peer
+  AdminOUIdentifier:
+    Certificate: cacerts/ca-sdl-localcoin-jp-8054.pem
+    OrganizationalUnitIdentifier: admin
+  OrdererOUIdentifier:
+    Certificate: cacerts/ca-sdl-localcoin-jp-8054.pem
+    OrganizationalUnitIdentifier: orderer' >${FABRIC_CA_CLIENT_HOME}/msp/config.yaml
