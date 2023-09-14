@@ -17,7 +17,7 @@ function checkToolVersion() {
     ## Check if your have cloned the peer binaries and configuration files.
     peer version >/dev/null 2>&1 1>&log.txt
 
-    if [[ $? -ne 0 || ! -d "../config" ]]; then
+    if [[ $? -ne 0 || ! -d "$PROJECT_ROOT/config" ]]; then
         errorln "Peer binary and configuration files not found.."
         errorln "You can use get-fabric.sh to fix it."
         errorln "Follow the instructions in the Fabric docs to install the Fabric Binaries:"
