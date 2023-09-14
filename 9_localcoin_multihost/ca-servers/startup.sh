@@ -1,4 +1,4 @@
-pushd .
+pushd . 2>&1 1>&/dev/null
 cd ..
 . 00_setup_env.sh
 . 01-1_startup_tls_ca.sh
