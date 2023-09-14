@@ -20,7 +20,7 @@ echo 'NodeOUs:
     OrganizationalUnitIdentifier: orderer' >${FABRIC_CA_CLIENT_HOME}/msp/config.yaml
 
 infoln "Enroll peer0 tls information => tls"
-fabric-ca-client enroll -d -u https://peer0-sdl:peer0-sdlpw@$ROOT_TLS_CA_SERVER --enrollment.profile tls --csr.hosts peer0.sdl.localcoin.jp -M tls 2>&1 1>&log.txt
+fabric-ca-client enroll -d -u https://peer0-sdl:peer0-sdlpw@$CA_TLS_LOCALCOIN --enrollment.profile tls --csr.hosts peer0.sdl.localcoin.jp -M tls 2>&1 1>&log.txt
 ifErrorPause
 
 # infoln "Enroll admin1 => admin1/msp"

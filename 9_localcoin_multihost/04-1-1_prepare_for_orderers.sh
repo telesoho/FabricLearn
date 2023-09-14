@@ -20,7 +20,7 @@ echo 'NodeOUs:
     OrganizationalUnitIdentifier: orderer' >${FABRIC_CA_CLIENT_HOME}/msp/config.yaml
 
 infoln "Enroll orderer0 tls infomation => tls"
-fabric-ca-client enroll -d -u https://orderer0:orderer0pw@$ROOT_TLS_CA_SERVER --enrollment.profile tls --csr.hosts orderer0.orderer.localcoin.jp \
+fabric-ca-client enroll -d -u https://orderer0:orderer0pw@$CA_TLS_LOCALCOIN --enrollment.profile tls --csr.hosts orderer0.orderer.localcoin.jp \
   -M tls 2>&1 1>&log.txt; ifErrorPause
 
 
@@ -69,7 +69,7 @@ echo 'NodeOUs:
     OrganizationalUnitIdentifier: orderer' >${FABRIC_CA_CLIENT_HOME}/msp/config.yaml
 
 infoln "Enroll orderer1 tls infomation => tls"
-fabric-ca-client enroll -d -u https://orderer1:orderer1pw@$ROOT_TLS_CA_SERVER --enrollment.profile tls --csr.hosts orderer1.orderer.localcoin.jp \
+fabric-ca-client enroll -d -u https://orderer1:orderer1pw@$CA_TLS_LOCALCOIN --enrollment.profile tls --csr.hosts orderer1.orderer.localcoin.jp \
   -M tls 2>&1 1>&log.txt; ifErrorPause
 
 
@@ -118,7 +118,7 @@ echo 'NodeOUs:
     OrganizationalUnitIdentifier: orderer' >${FABRIC_CA_CLIENT_HOME}/msp/config.yaml
 
 infoln "Enroll orderer2 tls infomation => tls"
-fabric-ca-client enroll -d -u https://orderer2:orderer2pw@$ROOT_TLS_CA_SERVER --enrollment.profile tls --csr.hosts orderer2.orderer.localcoin.jp \
+fabric-ca-client enroll -d -u https://orderer2:orderer2pw@$CA_TLS_LOCALCOIN --enrollment.profile tls --csr.hosts orderer2.orderer.localcoin.jp \
   -M tls 2>&1 1>&log.txt; ifErrorPause
 
 

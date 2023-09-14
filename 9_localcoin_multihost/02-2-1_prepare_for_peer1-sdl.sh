@@ -20,7 +20,7 @@ echo 'NodeOUs:
     OrganizationalUnitIdentifier: orderer' >${FABRIC_CA_CLIENT_HOME}/msp/config.yaml
 
 infoln "Enroll peer1 tls information => tls"
-fabric-ca-client enroll -d -u https://peer1-sdl:peer1-sdlpw@$ROOT_TLS_CA_SERVER --enrollment.profile tls --csr.hosts peer1.sdl.localcoin.jp -M tls 2>&1 1>&log.txt; ifErrorPause
+fabric-ca-client enroll -d -u https://peer1-sdl:peer1-sdlpw@$CA_TLS_LOCALCOIN --enrollment.profile tls --csr.hosts peer1.sdl.localcoin.jp -M tls 2>&1 1>&log.txt; ifErrorPause
 
 # see:https://hyperledger-fabric-ca.readthedocs.io/en/latest/operations_guide.html#create-genesis-block-and-channel-transaction
 infoln "Copy tls/tlscacerts => msp/tlscacerts"

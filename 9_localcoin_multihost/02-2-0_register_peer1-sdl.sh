@@ -2,8 +2,8 @@ noteln "Register ids for peer1 node"
 
 export FABRIC_CA_CLIENT_HOME=$LOCAL_ROOT_PATH/fabric-ca-client/tlsca.localcoin.jp/users/tls-admin
 
-infoln "Registering tls client id peer1-sdl on $ROOT_TLS_CA_SERVER"
-fabric-ca-client register -u https://$ROOT_TLS_CA_SERVER --id.name peer1-sdl --id.secret peer1-sdlpw --id.type client  2>&1 1>&log.txt; ifErrorPause
+infoln "Registering tls client id peer1-sdl on $CA_TLS_LOCALCOIN"
+fabric-ca-client register -u https://$CA_TLS_LOCALCOIN --id.name peer1-sdl --id.secret peer1-sdlpw --id.type client  2>&1 1>&log.txt; ifErrorPause
 
 
 export FABRIC_CA_CLIENT_HOME=$LOCAL_ROOT_PATH/fabric-ca-client/ca.sdl.localcoin.jp/users/ca-sdl-admin

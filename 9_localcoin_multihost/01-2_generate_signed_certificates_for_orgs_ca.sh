@@ -2,13 +2,13 @@
 export FABRIC_CA_CLIENT_HOME=$LOCAL_ROOT_PATH/fabric-ca-client/tlsca.localcoin.jp/users/tls-admin
 
 infoln "Register the organization CA bootstrap identity"
-fabric-ca-client register -u https://$ROOT_TLS_CA_SERVER --id.name ca-sdl-admin --id.secret ca-sdl-adminpw --id.type client \
+fabric-ca-client register -u https://$CA_TLS_LOCALCOIN --id.name ca-sdl-admin --id.secret ca-sdl-adminpw --id.type client \
     2>&1 1>&log.txt
 ifErrorPause
 
 export FABRIC_CA_CLIENT_HOME=$LOCAL_ROOT_PATH/fabric-ca-client/tlsca.localcoin.jp/users/ca-sdl-admin
 infoln "Enroll the organization CA bootstrap identity with the TLS CA"
-fabric-ca-client enroll -d -u https://ca-sdl-admin:ca-sdl-adminpw@$ROOT_TLS_CA_SERVER \
+fabric-ca-client enroll -d -u https://ca-sdl-admin:ca-sdl-adminpw@$CA_TLS_LOCALCOIN \
     --enrollment.profile tls --csr.hosts '*.sdl.localcoin.jp' 2>&1 1>&log.txt
 ifErrorPause
 
