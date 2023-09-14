@@ -11,10 +11,10 @@ configtxgen -profile SdlChannel --outputCreateChannelTx $CHANNELS_FOLDER/sdlchan
 
 infoln "Create sdlchannel"
 peer channel create --outputBlock $CHANNELS_FOLDER/sdlchannel.block -c sdlchannel -f $CHANNELS_FOLDER/sdlchannel.tx \
-  -o $ORDERER --tls --cafile $ROOT_TLS_CA_CERTFILES 2>&1 1>&log.txt; ifErrorPause
+  -o $ORDERER --tls --cafile $FABRIC_CA_CLIENT_TLS_CERTFILES 2>&1 1>&log.txt; ifErrorPause
 
 infoln "Join Peer 0 Node to the Channel"
-peer channel join -b $CHANNELS_FOLDER/sdlchannel.block -o $ORDERER --cafile $ROOT_TLS_CA_CERTFILES --tls 2>&1 1>&log.txt; ifErrorPause
+peer channel join -b $CHANNELS_FOLDER/sdlchannel.block -o $ORDERER --cafile $FABRIC_CA_CLIENT_TLS_CERTFILES --tls 2>&1 1>&log.txt; ifErrorPause
 
 noteln "Show the result:"
 tree $CHANNELS_FOLDER

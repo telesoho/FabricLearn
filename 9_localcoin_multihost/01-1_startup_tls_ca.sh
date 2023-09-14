@@ -2,13 +2,12 @@
 noteln "Start up tlsca.localcoin.jp CA server"
 docker-compose up -d tlsca.localcoin.jp
 wait 5
-ROOT_TLS_CA_CERTFILES=$LOCAL_ROOT_PATH/fabric-ca-server/tlsca.localcoin.jp/ca-cert.pem
 
 mkdir -p $LOCAL_ROOT_PATH/fabric-ca-client
 
 FABRIC_CA_CLIENT_TLS_CERTFILES=$LOCAL_ROOT_PATH/fabric-ca-client/tls-ca-cert.pem
 
-cp $ROOT_TLS_CA_CERTFILES $FABRIC_CA_CLIENT_TLS_CERTFILES; ifErrorPause
+cp $LOCAL_ROOT_PATH/fabric-ca-server/tlsca.localcoin.jp/ca-cert.pem $FABRIC_CA_CLIENT_TLS_CERTFILES; ifErrorPause
 
 infoln "Root TLS CA has been copied to $FABRIC_CA_CLIENT_TLS_CERTFILES"
 

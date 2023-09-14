@@ -33,7 +33,7 @@ ifErrorPause
 export FABRIC_CA_CLIENT_HOME=$LOCAL_ROOT_PATH/fabric-ca-client/ca.sdl.localcoin.jp/users/sdl-admin
 
 infoln "Enroll sdl-admin user"
-fabric-ca-client enroll -u https://sdl-admin:sdl-adminpw@$CA_SDL_LOCALCOIN --tls.certfiles $ROOT_TLS_CA_CERTFILES 2>&1 1>&log.txt
+fabric-ca-client enroll -u https://sdl-admin:sdl-adminpw@$CA_SDL_LOCALCOIN --tls.certfiles $FABRIC_CA_CLIENT_TLS_CERTFILES 2>&1 1>&log.txt
 ifErrorPause
 
 echo 'NodeOUs:
