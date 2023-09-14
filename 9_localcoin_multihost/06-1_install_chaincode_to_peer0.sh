@@ -4,7 +4,7 @@ noteln "Install chaincode to peers"
 infoln "install chaincode package to peer0"
 . env_peer0.sh
 
-. install_chaincode.sh --name odoo-user --src $SCRIPT_ROOT_DIR/chaincode/odoo-user \
+. install_chaincode.sh --name odoo-user --src $PROJECT_ROOT/chaincode/odoo-user \
     --lang javascript --channel sdlchannel
 
 infoln "Invoke testing"

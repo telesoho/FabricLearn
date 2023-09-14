@@ -188,3 +188,15 @@ services:
     networks:
       localcoin_net:
         ipv4_address: 172.1.0.100
+
+  files.localcoin.jp:
+    image: halverneus/static-file-server:latest
+    restart: always
+    ports:
+      - "8888:8080"
+    volumes:
+      - ${LOCAL_ROOT_PATH}/fabric-ca-client:/web
+    container_name: files.localcoin.jp
+    networks:
+      localcoin_net:
+        ipv4_address: 172.1.0.101

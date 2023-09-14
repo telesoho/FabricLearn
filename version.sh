@@ -3,13 +3,13 @@ export FABRIC_VERSION=${FABRIC_VERSION:-2.2.3}
 export FABRIC_CA_VERSION=${FABRIC_CA_VERSION:-1.4.7}
 export FABRIC_BASE_VERSION=${FABRIC_BASE_VERSION:-2.2.3}
 
-export SCRIPT_ROOT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+export PROJECT_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
-if [ -d "$SCRIPT_ROOT_DIR/bin" ]; then
-    export PATH="$SCRIPT_ROOT_DIR/bin:$PATH"
+if [ -d "$PROJECT_ROOT/bin" ]; then
+    export PATH="$PROJECT_ROOT/bin:$PATH"
 fi
 
-export FABRIC_CFG_PATH="$SCRIPT_ROOT_DIR/config"
+export FABRIC_CFG_PATH="$PROJECT_ROOT/config"
 
 function checkToolVersion() {
     noteln "Check version for Fabric $FABRIC_VERSION & Fabric CA $FABRIC_CA_VERSION"
