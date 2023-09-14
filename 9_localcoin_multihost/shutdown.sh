@@ -28,3 +28,13 @@ docker container prune -f
 docker volume prune -f
 docker rm $(docker ps -a -f status=exited -f status=created -q)
 # removeUnwantedImages
+
+pushd .
+cd peers/peer0
+. shutdown.sh
+popd
+
+pushd .
+cd orderers/orderer0
+. shutdown.sh
+popd
