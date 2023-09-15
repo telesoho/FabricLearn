@@ -14,6 +14,13 @@ class OdooUserContract extends Contract {
             role: ctx.clientIdentity.getAttributeValue("role")
         };
     }
+
+    async Test(ctx, name = "odoo-user", symbol = "Odoo User") {
+        await ctx.stub.putState("nameKey", Buffer.from(name));
+        await ctx.stub.putState("symbolKey", Buffer.from(symbol));
+        return true;
+    }
+
 }
 
 module.exports = OdooUserContract;

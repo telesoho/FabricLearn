@@ -9,4 +9,4 @@ infoln "install chaincode package to peer0"
 
 infoln "Invoke testing"
 peer chaincode invoke -o $ORDERER --tls --cafile $FABRIC_CA_CLIENT_TLS_CERTFILES --channelID sdlchannel \
-    --name odoo-user -c '{"Args":["ClientAccountInfo"]}' 
+    --name odoo-user -c '{"Args":["Test"]}' 
