@@ -12,7 +12,6 @@ cp $LOCAL_ROOT_PATH/fabric-ca-server/tlsca.localcoin.jp/ca-cert.pem $FABRIC_CA_C
 infoln "Root TLS CA has been copied to $FABRIC_CA_CLIENT_TLS_CERTFILES"
 
 export FABRIC_CA_CLIENT_TLS_CERTFILES=$FABRIC_CA_CLIENT_TLS_CERTFILES
-export CA_TLS_LOCALCOIN="$CA_TLS_LOCALCOIN"
 
 export FABRIC_CA_CLIENT_HOME=$LOCAL_ROOT_PATH/fabric-ca-client/tlsca.localcoin.jp/users/tls-admin
 infoln "Enroll bootstrap admin identity with TLS CA"

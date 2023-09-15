@@ -1,5 +1,3 @@
-pushd . 2>&1 1>&/dev/null
-cd ..
 . 00_setup_env.sh
 . 01-1_startup_tls_ca.sh
 wait 8
@@ -11,4 +9,3 @@ wait 8
 wait 8
 docker-compose up -d files.localcoin.jp
 wait 3
-popd 2>&1 1>&/dev/null

@@ -2,15 +2,7 @@
 . ../version.sh
 
 infoln "Shutdown all services"
-docker-compose down -v
-infoln "Remove all data..."
-rm -rf data
-rm -rf fabric-ca-client
-docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && find fabric-ca-server/ca.orderer.localcoin.jp/. ! -name 'fabric-ca-server-config.yaml' ! -name '.gitignore' ! -name '..' ! -name '.'  -exec rm -rf {} +'
-docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && find fabric-ca-server/tlsca.localcoin.jp/. ! -name 'fabric-ca-server-config.yaml' ! -name '.gitignore' ! -name '..' ! -name '.'  -exec rm -rf {} +'
-docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && find fabric-ca-server/ca.sdl.localcoin.jp/. ! -name 'fabric-ca-server-config.yaml' ! -name '.gitignore' ! -name '..' ! -name '.'  -exec rm -rf {} +'
-# docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf fabric-ca-client'
-rm log.txt
+docker-compose down -v 2>&1 1>&/dev/null
 
 # Delete any images that were generated as a part of this setup
 # specifically the following images are often left behind:
@@ -24,31 +16,36 @@ function removeUnwantedImages() {
     fi
 }
 
-docker container prune -f 2>&1 1>&/dev/null
-docker volume prune -f 2>&1 1>&/dev/null
-docker rm $(docker ps -a -f status=exited -f status=created -q) 2>&1 1>&/dev/null
-# removeUnwantedImages
+pushd . 2>&1 1>&/dev/null
+cd ca-servers
+. shutdown.sh 2>&1 1>&/dev/null
+popd 2>&1 1>&/dev/null
 
 pushd . 2>&1 1>&/dev/null
 cd peers/peer0
-. shutdown.sh
+. shutdown.sh 2>&1 1>&/dev/null
 popd 2>&1 1>&/dev/null
 
 pushd . 2>&1 1>&/dev/null
 cd peers/peer1
-. shutdown.sh
+. shutdown.sh 2>&1 1>&/dev/null
 popd 2>&1 1>&/dev/null
 
 pushd . 2>&1 1>&/dev/null
 cd orderers/orderer0
-. shutdown.sh
+. shutdown.sh 2>&1 1>&/dev/null
 popd 2>&1 1>&/dev/null
 
 pushd . 2>&1 1>&/dev/null
 cd chaincodes
-. shutdown.sh
+. shutdown.sh 2>&1 1>&/dev/null
 popd 2>&1 1>&/dev/null
 
 dirs -c
+
+docker container prune -f 2>&1 1>&/dev/null
+docker volume prune -f 2>&1 1>&/dev/null
+docker rm $(docker ps -a -f status=exited -f status=created -q) 2>&1 1>&/dev/null
+# removeUnwantedImages
 
 docker volume ls
