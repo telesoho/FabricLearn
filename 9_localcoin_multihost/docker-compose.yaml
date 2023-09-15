@@ -143,8 +143,6 @@ services:
     networks:
       localcoin_net:
         ipv4_address: 172.1.0.30
-    depends_on:
-      - couchdb.localcoin.jp
 
   peer1.sdl.localcoin.jp:
     container_name: peer1.sdl.localcoin.jp
@@ -171,8 +169,6 @@ services:
     networks:
       localcoin_net:
         ipv4_address: 172.1.0.31
-    depends_on:
-      - couchdb.localcoin.jp
 
   couchdb.localcoin.jp:
     restart: always

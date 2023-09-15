@@ -1,9 +1,24 @@
-version: "2"
+version: "2.1"
 
 services:
+  dns-base:
+    extra_hosts:
+      - "tlsca.localcoin.jp:192.168.1.9"
+      - "ca.orderer.localcoin.jp:192.168.1.9"
+      - "ca.sdl.localcoin.jp:192.168.1.9"
+      - "orderer0.orderer.localcoin.jp:192.168.1.9"
+      - "orderer2.orderer.localcoin.jp:192.168.1.9"
+      - "orderer1.orderer.localcoin.jp:192.168.1.9"
+      - "peer0.sdl.localcoin.jp:192.168.1.10"
+      - "peer1.sdl.localcoin.jp:192.168.1.9"
+      - "couchdb.localcoin.jp:192.168.1.9"
+      - "files.localcoin.jp:192.168.1.9"
+
   ca-base:
     image: hyperledger/fabric-ca:${FABRIC_CA_VERSION}
     restart: always
+    extends:
+      service: dns-base
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_TLS_ENABLED=true
@@ -12,6 +27,8 @@ services:
   peer-base:
     image: hyperledger/fabric-peer:${FABRIC_VERSION}
     restart: always
+    extends:
+      service: dns-base
     environment:
       #Generic peer variables
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
@@ -41,6 +58,8 @@ services:
 
   orderer-base:
     image: hyperledger/fabric-orderer:${FABRIC_VERSION}
+    extends:
+      service: dns-base
     environment:
       # - FABRIC_LOGGING_SPEC=DEBUG
       # - ORDERER_GENERAL_LOGLEVEL=debug

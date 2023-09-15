@@ -14,7 +14,7 @@
 |      | peer1.sdl.localcoin.jp:8051~8052   |
 |      | couchdb.sdl.localcoin.jp:5984      |
 
-`/etc/hosts`
+单服务器时`/etc/hosts`的设定：
 
 ```ini
 172.1.0.10 tlsca.localcoin.jp
@@ -27,4 +27,19 @@
 172.1.0.31 peer1.sdl.localcoin.jp
 172.1.0.100 couchdb.localcoin.jp
 172.1.0.1 files.localcoin.jp
+```
+
+`192.168.1.9`和`192.168.1.10`双服务器时`/etc/hosts`的设定（可根据需求调整）：
+
+```ini
+192.168.1.9 files.localcoin.jp
+192.168.1.9 tlsca.localcoin.jp
+192.168.1.9 ca.orderer.localcoin.jp
+192.168.1.9 ca.sdl.localcoin.jp
+192.168.1.9 orderer0.orderer.localcoin.jp
+192.168.1.9 orderer2.orderer.localcoin.jp
+192.168.1.9 orderer1.orderer.localcoin.jp
+192.168.1.10 peer0.sdl.localcoin.jp
+192.168.1.9 peer1.sdl.localcoin.jp
+192.168.1.9 couchdb.localcoin.jp
 ```

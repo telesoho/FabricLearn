@@ -17,6 +17,11 @@ function removeUnwantedImages() {
 }
 
 pushd . 2>&1 1>&/dev/null
+cd couchdb
+. shutdown.sh 2>&1 1>&/dev/null
+popd 2>&1 1>&/dev/null
+
+pushd . 2>&1 1>&/dev/null
 cd ca-servers
 . shutdown.sh 2>&1 1>&/dev/null
 popd 2>&1 1>&/dev/null

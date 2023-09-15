@@ -1,4 +1,9 @@
 pushd . 2>&1 1>&/dev/null
+cd couchdb
+. startup.sh
+popd 2>&1 1>&/dev/null
+
+pushd . 2>&1 1>&/dev/null
 cd ca-servers
 . startup.sh
 popd 2>&1 1>&/dev/null
