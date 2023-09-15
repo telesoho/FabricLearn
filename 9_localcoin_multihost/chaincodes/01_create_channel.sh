@@ -7,7 +7,7 @@ cp $CORE_PEER_MSPCONFIGPATH/keystore/* $CORE_PEER_MSPCONFIGPATH/keystore.key
 
 infoln "Generate configtx for sdlchannel ..."
 configtxgen -profile SdlChannel --outputCreateChannelTx $CHANNELS_FOLDER/sdlchannel.tx -channelID sdlchannel \
-  -configPath $PROJECT_ROOT/config 2>&1 1>&log.txt; ifErrorPause "Failed to generate configtx ..."
+  -configPath $LOCAL_ROOT_PATH/config 2>&1 1>&log.txt; ifErrorPause "Failed to generate configtx ..."
 
 infoln "Create sdlchannel"
 peer channel create --outputBlock $CHANNELS_FOLDER/sdlchannel.block -c sdlchannel -f $CHANNELS_FOLDER/sdlchannel.tx \

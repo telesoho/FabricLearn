@@ -24,22 +24,31 @@ function removeUnwantedImages() {
     fi
 }
 
-docker container prune -f
-docker volume prune -f
-docker rm $(docker ps -a -f status=exited -f status=created -q)
+docker container prune -f 2>&1 1>&/dev/null
+docker volume prune -f 2>&1 1>&/dev/null
+docker rm $(docker ps -a -f status=exited -f status=created -q) 2>&1 1>&/dev/null
 # removeUnwantedImages
 
-pushd .
+pushd . 2>&1 1>&/dev/null
 cd peers/peer0
 . shutdown.sh
-popd
+popd 2>&1 1>&/dev/null
 
-pushd .
+pushd . 2>&1 1>&/dev/null
+cd peers/peer1
+. shutdown.sh
+popd 2>&1 1>&/dev/null
+
+pushd . 2>&1 1>&/dev/null
 cd orderers/orderer0
 . shutdown.sh
-popd
+popd 2>&1 1>&/dev/null
 
-pushd .
+pushd . 2>&1 1>&/dev/null
 cd chaincodes
 . shutdown.sh
-popd
+popd 2>&1 1>&/dev/null
+
+dirs -c
+
+docker volume ls

@@ -146,7 +146,8 @@ tree $FABRIC_CA_CLIENT_HOME
 
 noteln "Generate configtx for system-channel..."
 
-configtxgen -profile OrgsOrdererGenesis -outputBlock $LOCAL_ROOT_PATH/fabric-ca-client/system-channel/genesis.block -channelID system-channel -configPath $PROJECT_ROOT/config 2>&1 1>&log.txt
+configtxgen -profile OrgsOrdererGenesis -outputBlock $LOCAL_ROOT_PATH/fabric-ca-client/system-channel/genesis.block \
+  -channelID system-channel -configPath $LOCAL_ROOT_PATH/config 2>&1 1>&log.txt
 ifErrorPause "Failed to generate configtx ..."
 
 infoln "Copy system-channel.genesis.block => local MSP"
