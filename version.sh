@@ -3,13 +3,13 @@ export FABRIC_VERSION=${FABRIC_VERSION:-2.2.3}
 export FABRIC_CA_VERSION=${FABRIC_CA_VERSION:-1.4.7}
 export FABRIC_BASE_VERSION=${FABRIC_BASE_VERSION:-2.2.3}
 
-export PROJECT_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+export FABRIC_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
-if [ -d "$PROJECT_ROOT/bin" ]; then
-    export PATH="$PROJECT_ROOT/bin:$PATH"
+if [ -d "$FABRIC_ROOT/bin" ]; then
+    export PATH="$FABRIC_ROOT/bin:$PATH"
 fi
 
-export FABRIC_CFG_PATH="$PROJECT_ROOT/config"
+export FABRIC_CFG_PATH="$FABRIC_ROOT/config"
 
 function checkToolVersion() {
     noteln "Check version for Fabric $FABRIC_VERSION & Fabric CA $FABRIC_CA_VERSION"
@@ -17,7 +17,7 @@ function checkToolVersion() {
     ## Check if your have cloned the peer binaries and configuration files.
     peer version >/dev/null 2>&1 1>&log.txt
 
-    if [[ $? -ne 0 || ! -d "$PROJECT_ROOT/config" ]]; then
+    if [[ $? -ne 0 || ! -d "$FABRIC_ROOT/config" ]]; then
         errorln "Peer binary and configuration files not found.."
         errorln "You can use get-fabric.sh to fix it."
         errorln "Follow the instructions in the Fabric docs to install the Fabric Binaries:"

@@ -1,6 +1,9 @@
 #!/bin/bash
-. ../utils.sh
-. ../version.sh
+
+export PROJECT_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+
+. $PROJECT_ROOT/../utils.sh
+. $PROJECT_ROOT/../version.sh
 
 checkToolVersion
 export LOCAL_ROOT_PATH=$PWD

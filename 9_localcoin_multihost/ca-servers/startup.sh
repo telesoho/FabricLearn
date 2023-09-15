@@ -11,4 +11,4 @@ wait 8
 wait 8
 docker-compose up -d files.localcoin.jp
 wait 3
-popd 2>&1 1>&null
+popd 2>&1 1>&/dev/null
