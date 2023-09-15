@@ -51,7 +51,7 @@ mkdir -p ${ORG_HOME}/msp/tlscacerts
 cat ${FABRIC_CA_CLIENT_HOME}/tls/tlscacerts/* >>${ORG_HOME}/msp/tlscacerts/ca.crt
 
 infoln "Copy config/core.yaml"
-cp $LOCAL_ROOT_PATH/config/core.yaml $FABRIC_CA_CLIENT_HOME/core.yaml
+cp $PROJECT_ROOT/config/core.yaml $FABRIC_CA_CLIENT_HOME/core.yaml
 ifErrorPause
 
 noteln "Show the result:"

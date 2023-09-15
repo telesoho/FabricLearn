@@ -38,3 +38,8 @@ pushd .
 cd orderers/orderer0
 . shutdown.sh
 popd
+
+pushd .
+cd chaincodes
+. shutdown.sh
+popd
