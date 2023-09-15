@@ -131,6 +131,7 @@ services:
       - CORE_PEER_ADDRESS=peer0.sdl.localcoin.jp:7051
       - CORE_PEER_CHAINCODEADDRESS=peer0.sdl.localcoin.jp:7052
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.sdl.localcoin.jp:7051
+      - CORE_PEER_GOSSIP_ENDPOINT=peer0.sdl.localcoin.jp:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.sdl.localcoin.jp:7051
       - CORE_PEER_LOCALMSPID=sdlMSP
     volumes:
@@ -157,6 +158,7 @@ services:
       - CORE_PEER_ADDRESS=peer1.sdl.localcoin.jp:8051
       - CORE_PEER_CHAINCODEADDRESS=peer1.sdl.localcoin.jp:8052
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.sdl.localcoin.jp:8051
+      - CORE_PEER_GOSSIP_ENDPOINT=peer1.sdl.localcoin.jp:8051      
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.sdl.localcoin.jp:8051
       - CORE_PEER_LOCALMSPID=sdlMSP
     volumes:
