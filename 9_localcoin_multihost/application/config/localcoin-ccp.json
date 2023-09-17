@@ -1,0 +1,161 @@
+{
+  "name":"cucumber-network",
+  "description":"The network to be in if you like scenario tests, not vegetables",
+  "version":"1.0",
+  "client":{
+    "organization":"sdl",
+    "credentialStore":{
+      "path":"/tmp/hfc-kvs",
+      "cryptoStore":{
+        "path":"/tmp/hfc-cvs"
+      },
+      "wallet":"wallet-name"
+    }
+  },
+  "channels":{
+	"sdlchannel":{
+		"orderers":[
+		  "orderer0.orderer.localcoin.jp",
+		  "orderer1.orderer.localcoin.jp",
+		  "orderer2.orderer.localcoin.jp"
+		],
+		"peers":[
+		  "peer0.sdl.localcoin.jp",
+		  "peer1.sdl.localcoin.jp"
+		],
+		"chaincodes":[]
+	  }
+  },
+  "organizations":{
+    "sdl":{
+      "mspid":"sdlMSP",
+      "peers":[
+        "peer0.sdl.localcoin.jp",
+        "peer1.sdl.localcoin.jp"
+      ],
+      "certificateAuthorities":[
+        "ca-sdl"
+      ],
+			"adminPrivateKeyPEM":{
+        "path": "/home/telesoho/prjs/FabricLearn/9_localcoin_multihost/ca-servers/fabric-ca-client/ca.sdl.localcoin.jp/users/sdl-admin/msp/keystore.pem"
+			},
+			"signedCertPEM":{
+        "path": "/home/telesoho/prjs/FabricLearn/9_localcoin_multihost/ca-servers/fabric-ca-client/ca.sdl.localcoin.jp/users/sdl-admin/msp/signcerts/cert.pem"
+			},
+      "users": {
+        "sdl-admin": {
+          "privateKeyPEM": {
+            "path": "/home/telesoho/prjs/FabricLearn/9_localcoin_multihost/ca-servers/fabric-ca-client/ca.sdl.localcoin.jp/users/sdl-admin/msp/keystore.pem"
+          },
+          "signedCertPEM": {
+            "path": "/home/telesoho/prjs/FabricLearn/9_localcoin_multihost/ca-servers/fabric-ca-client/ca.sdl.localcoin.jp/users/sdl-admin/msp/signcerts/cert.pem"
+          }
+        }
+      }
+    }
+  },
+  "peers": {
+    "peer0.sdl.localcoin.jp": {
+      "url": "grpcs://peer0.sdl.localcoin.jp:7051",
+      "tlsCACerts": {
+        "path": "/home/telesoho/prjs/FabricLearn/9_localcoin_multihost/ca-servers/fabric-ca-client/tls-ca-cert.pem"
+      },
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.sdl.localcoin.jp",
+        "hostnameOverride": "peer0.sdl.localcoin.jp"
+      }
+    },
+    "peer1.sdl.localcoin.jp": {
+      "url": "grpcs://peer1.sdl.localcoin.jp:8051",
+      "tlsCACerts": {
+        "path": "/home/telesoho/prjs/FabricLearn/9_localcoin_multihost/ca-servers/fabric-ca-client/tls-ca-cert.pem"
+      },
+      "grpcOptions": {
+        "ssl-target-name-override": "peer1.sdl.localcoin.jp",
+        "hostnameOverride": "peer1.sdl.localcoin.jp"
+      }
+    }
+  },
+  "certificateAuthorities": {
+    "tlsca.localcoin.jp": {
+      "url": "https://tlsca.localcoin.jp:8054",
+      "caName": "tlsca",
+      "tlsCACerts": {
+        "path": "/home/telesoho/prjs/FabricLearn/9_localcoin_multihost/ca-servers/fabric-ca-client/tls-ca-cert.pem"
+      },
+      "httpOptions": {
+        "verify": false
+      },
+      "registrar":[
+        {
+          "enrollId":"tls-admin",
+          "enrollSecret":"tls-adminpw"
+        }
+      ]
+    },    
+    "ca.sdl.localcoin.jp": {
+      "url": "https://ca.sdl.localcoin.jp:8054",
+      "caName": "ca-sdl",
+      "tlsCACerts": {
+        "path": "/home/telesoho/prjs/FabricLearn/9_localcoin_multihost/ca-servers/fabric-ca-client/tls-ca-cert.pem"
+      },
+      "httpOptions": {
+        "verify": false
+      },
+      "registrar":[
+        {
+          "enrollId":"ca-sdl-admin",
+          "enrollSecret":"ca-sdl-adminpw"
+        }
+      ]
+    },
+    "ca.orderer.localcoin.jp": {
+      "url": "https://ca.orderer.localcoin.jp:7054",
+      "caName": "ca-orderer",
+      "tlsCACerts": {
+        "path": "/home/telesoho/prjs/FabricLearn/9_localcoin_multihost/ca-servers/fabric-ca-client/tls-ca-cert.pem"
+      },
+      "httpOptions": {
+        "verify": false
+      },
+      "registrar":[
+        {
+          "enrollId":"ca-orderer-admin",
+          "enrollSecret":"ca-orderer-adminpw"
+        }
+      ]
+    }
+  },
+  "orderers": {
+    "orderer0.orderer.localcoin.jp": {
+      "url": "grpcs://orderer0.orderer.localcoin.jp:7050",
+      "grpcOptions": {
+        "ssl-target-name-override": "orderer0.orderer.localcoin.jp",
+        "hostnameOverride": "orderer0.orderer.localcoin.jp"
+      },
+      "tlsCACerts": {
+        "path": "/home/telesoho/prjs/FabricLearn/9_localcoin_multihost/ca-servers/fabric-ca-client/tls-ca-cert.pem"
+      }
+    },
+    "orderer1.orderer.localcoin.jp": {
+      "url": "grpcs://orderer1.orderer.localcoin.jp:8050",
+      "grpcOptions": {
+        "ssl-target-name-override": "orderer1.orderer.localcoin.jp",
+        "hostnameOverride": "orderer1.orderer.localcoin.jp"
+      },
+      "tlsCACerts": {
+        "path": "/home/telesoho/prjs/FabricLearn/9_localcoin_multihost/ca-servers/fabric-ca-client/tls-ca-cert.pem"
+      }
+    },
+    "orderer2.orderer.localcoin.jp": {
+      "url": "grpcs://orderer2.orderer.localcoin.jp:9050",
+      "grpcOptions": {
+        "ssl-target-name-override": "orderer2.orderer.localcoin.jp",
+        "hostnameOverride": "orderer2.orderer.localcoin.jp"
+      },
+      "tlsCACerts": {
+        "path": "/home/telesoho/prjs/FabricLearn/9_localcoin_multihost/ca-servers/fabric-ca-client/tls-ca-cert.pem"
+      }
+    }    
+  }
+}
