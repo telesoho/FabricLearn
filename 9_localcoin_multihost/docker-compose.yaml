@@ -4,6 +4,7 @@ volumes:
   orderer0.orderer.localcoin.jp:
   orderer1.orderer.localcoin.jp:
   orderer2.orderer.localcoin.jp:
+  ordererx.orderer.localcoin.jp:  
   peer0.sdl.localcoin.jp:
   peer1.sdl.localcoin.jp:
   couchdb.localcoin.jp:
@@ -119,7 +120,7 @@ services:
         ipv4_address: 172.1.0.22
 
 
-  orderer3.orderer.localcoin.jp:
+  ordererx.orderer.localcoin.jp:
     extends:
       file: docker-base.yaml
       service: orderer-base
@@ -138,8 +139,8 @@ services:
       - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:10443
     command: orderer
     volumes:
-      - ${LOCAL_ROOT_PATH}/fabric-ca-client/ca.orderer.localcoin.jp/users/orderer1:/var/hyperledger/orderer
-      - orderer3.orderer.localcoin.jp:/var/hyperledger/production/orderer
+      - ${LOCAL_ROOT_PATH}/fabric-ca-client/ca.orderer.localcoin.jp/users/ordererx:/var/hyperledger/orderer
+      - ordererx.orderer.localcoin.jp:/var/hyperledger/production/orderer
     ports:
       - 10050:10050
       - 10053:10053
