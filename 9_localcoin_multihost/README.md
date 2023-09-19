@@ -36,9 +36,9 @@
 192.168.1.9 tlsca.localcoin.jp
 192.168.1.9 ca.orderer.localcoin.jp
 192.168.1.9 ca.sdl.localcoin.jp
-192.168.1.9 orderer0.orderer.localcoin.jp
-192.168.1.9 orderer2.orderer.localcoin.jp
+192.168.1.10 orderer0.orderer.localcoin.jp
 192.168.1.9 orderer1.orderer.localcoin.jp
+192.168.1.9 orderer2.orderer.localcoin.jp
 192.168.1.10 peer0.sdl.localcoin.jp
 192.168.1.9 peer1.sdl.localcoin.jp
 192.168.1.9 couchdb.localcoin.jp
