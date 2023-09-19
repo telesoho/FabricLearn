@@ -1,4 +1,4 @@
-noteln "Register ids for orderer0 node"
+noteln "Register ids for orderer node"
 
 export FABRIC_CA_CLIENT_HOME=$LOCAL_ROOT_PATH/fabric-ca-client/tlsca.localcoin.jp/users/tls-admin
 

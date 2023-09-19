@@ -20,6 +20,16 @@ cd orderers/orderer0
 popd 2>&1 1>&/dev/null
 
 pushd . 2>&1 1>&/dev/null
+cd orderers/orderer1
+. startup.sh
+popd 2>&1 1>&/dev/null
+
+pushd . 2>&1 1>&/dev/null
+cd orderers/orderer2
+. startup.sh
+popd 2>&1 1>&/dev/null
+
+pushd . 2>&1 1>&/dev/null
 cd chaincodes
 . startup.sh
 popd 2>&1 1>&/dev/null

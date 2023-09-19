@@ -42,6 +42,16 @@ cd orderers/orderer0
 popd 2>&1 1>&/dev/null
 
 pushd . 2>&1 1>&/dev/null
+cd orderers/orderer1
+. shutdown.sh 2>&1 1>&/dev/null
+popd 2>&1 1>&/dev/null
+
+pushd . 2>&1 1>&/dev/null
+cd orderers/orderer2
+. shutdown.sh 2>&1 1>&/dev/null
+popd 2>&1 1>&/dev/null
+
+pushd . 2>&1 1>&/dev/null
 cd chaincodes
 . shutdown.sh 2>&1 1>&/dev/null
 popd 2>&1 1>&/dev/null

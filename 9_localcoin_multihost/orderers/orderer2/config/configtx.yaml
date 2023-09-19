@@ -45,6 +45,8 @@ Organizations:
         # and peers may to connect to to push transactions and receive blocks respectively.
         OrdererEndpoints:
             - orderer0.orderer.localcoin.jp:7050
+            - orderer1.orderer.localcoin.jp:8050
+            - orderer2.orderer.localcoin.jp:9050
     - &sdlMSP
         # DefaultOrg defines the organization which is used in the sampleconfig
         # of the fabric.git development environment
@@ -125,6 +127,7 @@ Capabilities:
         # orderers on channel are at v2.0.0 or later.
         V2_0: true
 
+
 ################################################################################
 #
 #   SECTION: Orderer
@@ -145,12 +148,22 @@ Orderer: &OrdererDefaults
     # to include the OrdererEndpoints item in your org definition
     Addresses:
         - orderer0.orderer.localcoin.jp:7050
+        - orderer1.orderer.localcoin.jp:8050
+        - orderer2.orderer.localcoin.jp:9050
     EtcdRaft:
         Consenters:
         - Host: orderer0.orderer.localcoin.jp
           Port: 7050
           ClientTLSCert: ../fabric-ca-client/ca.orderer.localcoin.jp/users/orderer0/tls/server.crt
           ServerTLSCert: ../fabric-ca-client/ca.orderer.localcoin.jp/users/orderer0/tls/server.crt
+        - Host: orderer1.orderer.localcoin.jp
+          Port: 8050
+          ClientTLSCert: ../fabric-ca-client/ca.orderer.localcoin.jp/users/orderer1/tls/server.crt
+          ServerTLSCert: ../fabric-ca-client/ca.orderer.localcoin.jp/users/orderer1/tls/server.crt
+        - Host: orderer2.orderer.localcoin.jp
+          Port: 9050
+          ClientTLSCert: ../fabric-ca-client/ca.orderer.localcoin.jp/users/orderer2/tls/server.crt
+          ServerTLSCert: ../fabric-ca-client/ca.orderer.localcoin.jp/users/orderer2/tls/server.crt
 
 
     # Batch Timeout: The amount of time to wait before creating a batch
