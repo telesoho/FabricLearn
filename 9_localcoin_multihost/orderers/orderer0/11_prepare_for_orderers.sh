@@ -164,3 +164,12 @@ CA_CLIENT_HOME=$LOCAL_ROOT_PATH/fabric-ca-client/ca.orderer.localcoin.jp/users/o
 mkdir -p $CA_CLIENT_HOME/system-channel
 cp $LOCAL_ROOT_PATH/fabric-ca-client/system-channel/genesis.block $CA_CLIENT_HOME/system-channel/genesis.block
 
+noteln "Upload genesis.block => ftp server"
+USER_FOLDER=$LOCAL_ROOT_PATH/fabric-ca-client/ca.orderer.localcoin.jp/users
+
+ncftpput -u sdl -p sdlpw -P 2021 -R -m ftp.localcoin.jp /orderers \
+  $USER_FOLDER/orderer0 \
+  $USER_FOLDER/orderer1 \
+  $USER_FOLDER/orderer2
+ifErrorPause
+
