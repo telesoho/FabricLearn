@@ -2,7 +2,7 @@
 
 mkdir -p $LOCAL_ROOT_PATH/fabric-ca-client
 
-curl -o $LOCAL_ROOT_PATH/fabric-ca-client/tls-ca-cert.pem http://files.localcoin.jp:8888/tls-ca-cert.pem ;ifErrorPause
+ncftpget -u sdl -p sdlpw -P 2021 -R ftp.localcoin.jp $LOCAL_ROOT_PATH/fabric-ca-client /tls-ca-cert.pem 2>&1 1>&log.txt; ifErrorPause
 export FABRIC_CA_CLIENT_TLS_CERTFILES=$LOCAL_ROOT_PATH/fabric-ca-client/tls-ca-cert.pem
 
 infoln "Root TLS CA has been download to $FABRIC_CA_CLIENT_TLS_CERTFILES"
@@ -104,3 +104,4 @@ echo 'NodeOUs:
   OrdererOUIdentifier:
     Certificate: cacerts/ca-sdl-localcoin-jp-8054.pem
     OrganizationalUnitIdentifier: orderer' >${FABRIC_CA_CLIENT_HOME}/msp/config.yaml
+

@@ -26,13 +26,13 @@
 172.1.0.30 peer0.sdl.localcoin.jp
 172.1.0.31 peer1.sdl.localcoin.jp
 172.1.0.100 couchdb.localcoin.jp
-172.1.0.1 files.localcoin.jp
+172.1.0.1 ftp.localcoin.jp
 ```
 
 `192.168.1.9`和`192.168.1.10`双服务器时`/etc/hosts`的设定（可根据需求调整）：
 
 ```ini
-192.168.1.9 files.localcoin.jp
+192.168.1.9 ftp.localcoin.jp
 192.168.1.9 tlsca.localcoin.jp
 192.168.1.9 ca.orderer.localcoin.jp
 192.168.1.9 ca.sdl.localcoin.jp

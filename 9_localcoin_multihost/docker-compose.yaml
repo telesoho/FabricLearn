@@ -199,3 +199,22 @@ services:
     networks:
       localcoin_net:
         ipv4_address: 172.1.0.101
+
+  ftp.localcoin.jp: 
+    image: stilliard/pure-ftpd
+    ports:
+      - "2021:21"
+      - "30010-30019:30010-30019"
+    environment:
+      PUBLICHOST: "ftp.localcoin.jp"
+      FTP_USER_NAME: sdl
+      FTP_USER_PASS: sdlpw
+      FTP_USER_HOME: /home/sdl
+      FTP_PASSIVE_PORTS: "30010:30019"
+    container_name: ftp.localcoin.jp
+    networks:
+      localcoin_net:
+        ipv4_address: 172.1.0.102
+    volumes:
+      - ${LOCAL_ROOT_PATH}/fabric-ca-client:/home/sdl
+    
